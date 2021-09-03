@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.qourall.linuxcommands.R
 import com.qourall.linuxcommands.data.db.CommandsData
+import com.qourall.linuxcommands.ui.fragment.CategoryFragmentDirections
 import javax.sql.StatementEvent
 
 class CategoryAdapter(private val context: Context, private val data: List<String>) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -19,10 +21,14 @@ class CategoryAdapter(private val context: Context, private val data: List<Strin
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.itemTitle.text = data[position]
+
+        holder.itemView.setOnClickListener {
+            val action = CategoryFragmentDirections.actionCategoryFragmentToCommandsFragment(data[position])
+            Navigation.findNavController(holder.itemView).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
-        Log.d("dsvc",data.size.toString())
         return data.size
     }
 

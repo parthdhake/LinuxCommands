@@ -21,7 +21,7 @@ class CategoryFragment : Fragment() {
 
 
     lateinit var categoryAdapter: CategoryAdapter
-    var category : List<String> = emptyList()
+    var category: List<String> = emptyList()
     lateinit var categoryRecyclerView: RecyclerView
     val viewModel: CategoryViewModel by viewModels()
 
@@ -34,7 +34,8 @@ class CategoryFragment : Fragment() {
 
         categoryRecyclerView = root.findViewById<RecyclerView>(R.id.CategoryRecyclerView)
 
-        return root    }
+        return root
+    }
 
     override fun onStart() {
         super.onStart()

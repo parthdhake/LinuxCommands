@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,8 @@ import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.coroutines.Dispatchers
 
 class CommandsFragment : Fragment() {
+
+    val args: CommandsFragmentArgs by navArgs()
 
     lateinit var commandsAdapter: CommandsAdapter
     var commands : List<CommandsData> = emptyList()
@@ -40,12 +43,17 @@ class CommandsFragment : Fragment() {
         super.onStart()
         viewModel.getCommandsDetails()
 
-        viewModel.commandsDetails.observe(viewLifecycleOwner, {
-            commands = it
-            Log.d("scv", commands.toString())
+        viewModel.commandsDetails.observe(viewLifecycleOwner, { list ->
+            commands = if (args.category == "default"){
+                list
+            }else{
+                list.filter {
+                    it.command_category == args.category
+                }
+            }
             val linearLayoutManager = LinearLayoutManager(requireContext())
             commandsRecyclerView.layoutManager = linearLayoutManager
-            commandsAdapter = CommandsAdapter(requireContext(), it)
+            commandsAdapter = CommandsAdapter(requireContext(), commands)
             commandsRecyclerView.adapter = commandsAdapter
         })
 

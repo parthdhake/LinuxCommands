@@ -9,7 +9,11 @@
         android:id="@+id/categoryFragment"
         android:name="com.qourall.linuxcommands.ui.fragment.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_commandsFragment"
+            app:destination="@id/commandsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.qourall.linuxcommands.ui.fragment.FavouriteFragment"
@@ -27,6 +31,10 @@
         <action
             android:id="@+id/action_commandsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
