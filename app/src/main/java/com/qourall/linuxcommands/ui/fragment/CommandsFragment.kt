@@ -24,10 +24,6 @@ class CommandsFragment : Fragment() {
     lateinit var commandsRecyclerView: RecyclerView
     val viewModel: CommandsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,15 +36,11 @@ class CommandsFragment : Fragment() {
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
     override fun onStart() {
         super.onStart()
+        viewModel.getCommandsDetails()
 
-        viewModel.getCommandsDetails().observe(viewLifecycleOwner, {
+        viewModel.commandsDetails.observe(viewLifecycleOwner, {
             commands = it
             Log.d("scv", commands.toString())
             val linearLayoutManager = LinearLayoutManager(requireContext())

@@ -24,16 +24,16 @@
                 android:id="@+id/itemTitle"
                 android:textStyle="bold"
                 android:textColor="#624595"
+                android:fontFamily="@font/open_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
             <TextView
                 android:id="@+id/itemDesc"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/open_sans_italic"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
-
-
 
         </LinearLayout>
     </LinearLayout>

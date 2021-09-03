@@ -1,8 +1,11 @@
 package com.qourall.linuxcommands.data.db
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "Linux_Commands_Table")
 data class CommandsData(
     @PrimaryKey(autoGenerate = true) val _id: Int,
@@ -14,5 +17,5 @@ data class CommandsData(
     val command_option: String,
     val command_example: String,
     val command_remarks: String,
-    val favourite_boolean: Int,
-)
+    var favourite_boolean: Int,
+) : Parcelable

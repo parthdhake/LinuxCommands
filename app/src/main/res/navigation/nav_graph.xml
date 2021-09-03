@@ -14,10 +14,27 @@
         android:id="@+id/favouriteFragment"
         android:name="com.qourall.linuxcommands.ui.fragment.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/commandsFragment"
         android:name="com.qourall.linuxcommands.ui.fragment.CommandsFragment"
         android:label="fragment_commands"
-        tools:layout="@layout/fragment_commands" />
+        tools:layout="@layout/fragment_commands" >
+        <action
+            android:id="@+id/action_commandsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.qourall.linuxcommands.ui.fragment.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="commandDetails"
+            app:argType="com.qourall.linuxcommands.data.db.CommandsData" />
+    </fragment>
 </navigation>

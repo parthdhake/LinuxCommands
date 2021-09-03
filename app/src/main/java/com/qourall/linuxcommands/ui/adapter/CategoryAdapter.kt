@@ -18,7 +18,6 @@ class CategoryAdapter(private val context: Context, private val data: List<Strin
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        Log.d("popop",data[position])
         holder.itemTitle.text = data[position]
     }
 

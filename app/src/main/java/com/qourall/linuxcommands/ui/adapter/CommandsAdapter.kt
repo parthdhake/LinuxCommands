@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.qourall.linuxcommands.R
 import com.qourall.linuxcommands.data.db.CommandsData
+import com.qourall.linuxcommands.ui.fragment.CommandsFragmentDirections
 
 class CommandsAdapter(private val context: Context, private val data: List<CommandsData>) : RecyclerView.Adapter<CommandsAdapter.CommandsViewHolder>() {
 
@@ -17,13 +19,16 @@ class CommandsAdapter(private val context: Context, private val data: List<Comma
     }
 
     override fun onBindViewHolder(holder: CommandsViewHolder, position: Int) {
-        Log.d("popop",data[position].command_name)
         holder.itemTitle.text = data[position].command_name
         holder.itemDesc.text = data[position].command_description
+
+        holder.itemView.setOnClickListener {
+            val action = CommandsFragmentDirections.actionCommandsFragmentToDetailsFragment(data[position])
+            Navigation.findNavController(holder.itemView).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
-        Log.d("dsvc",data.size.toString())
         return data.size
     }
 
