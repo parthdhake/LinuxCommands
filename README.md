@@ -20,4 +20,4 @@ Linux Commands - CheatSheet
 
 | | | |
 |:----:|:----:|:----:|
-|<img alt="SS_6" src="ScreenShots/004.png"> | <img alt="SS_1" src="ScreenShots/005.png"> | <img alt="SS_1" src="ScreenShots/006.png"> |
+|<img alt="SS_6" src="ScreenShots/004.png"> | <img alt="SS_1" src="ScreenShots/005.png"> |
